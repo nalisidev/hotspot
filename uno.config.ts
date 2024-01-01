@@ -35,4 +35,5 @@ export default defineConfig({
   transformers: [
     transformerDirectives(),
   ],
+  include: [/\.ts/, /\.vue$/, /\.vue\?vue/],
 })

@@ -1,4 +1,5 @@
 {
+  "$schema": "https://shadcn-vue.com/schema.json",
   "style": "default",
   "typescript": true,
   "tailwind": {
@@ -7,9 +8,8 @@
     "baseColor": "neutral",
     "cssVariables": false
   },
-  "framework": "nuxt",
   "aliases": {
     "components": "@/components",
-    "utils": "@/utils"
+    "utils": "@/lib/utils"
   }
 }
