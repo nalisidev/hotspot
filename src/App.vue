@@ -54,7 +54,7 @@ const packages: Package[] = [
         </TabsTrigger>
       </TabsList>
       <TabsContent value="packages">
-        <div v-for="pkg in packages" my2 mx2>
+        <div v-for="pkg, idx in packages" :key="idx" my2 mx2>
           <Card>
             <CardHeader>
               <CardDescription flex gap-2 justify-between items-center>
