@@ -16,67 +16,65 @@ import {
   TabsList,
   TabsTrigger,
 } from '@/components/ui/tabs'
+import { Package } from '@/types'
+
+//dummy
+const packages: Package[] = [
+  {
+    duration: "2 hours",
+    devices: 1
+  },
+  {
+    duration: "1 hour",
+    devices: 2
+  }
+]
 </script>
 
 <template>
-  <div>
+  <div h-screen w-full>
     <Tabs default-value="account" class="w-[400px]">
     <TabsList class="grid w-full grid-cols-2">
-      <TabsTrigger value="account">
-        Account
+      <TabsTrigger value="packages" >
+        Packages
       </TabsTrigger>
-      <TabsTrigger value="password">
-        Password
+      <TabsTrigger value="voucher">
+        Voucher
       </TabsTrigger>
     </TabsList>
-    <TabsContent value="account">
-      <Card>
+    <TabsContent value="packages">
+      <div v-for="pkg in packages" my2>
+        <Card>
         <CardHeader>
-          <CardTitle>Account</CardTitle>
           <CardDescription>
-            Make changes to your account here. Click save when you're done.
+            {{ pkg.duration }} package • For {{ pkg.devices }} device(s)
           </CardDescription>
         </CardHeader>
-        <CardContent class="space-y-2">
-          <div class="space-y-1">
-            <Label for="name">Name</Label>
-            <Input id="name" default-value="Pedro Duarte" />
-          </div>
-          <div class="space-y-1">
-            <Label for="username">Username</Label>
-            <Input id="username" default-value="@peduarte" />
-          </div>
-        </CardContent>
         <CardFooter>
-          <Button>Save changes</Button>
+          <Button w-full>Buy Now</Button>
         </CardFooter>
       </Card>
+      </div>
     </TabsContent>
-    <TabsContent value="password">
+    <TabsContent value="voucher">
       <Card>
         <CardHeader>
-          <CardTitle>Password</CardTitle>
+          <CardTitle>Enter Voucher</CardTitle>
           <CardDescription>
-            Change your password here. After saving, you'll be logged out.
+            Connect back to your internet using the voucher.
           </CardDescription>
         </CardHeader>
         <CardContent class="space-y-2">
           <div class="space-y-1">
-            <Label for="current">Current password</Label>
-            <Input id="current" type="password" />
-          </div>
-          <div class="space-y-1">
-            <Label for="new">New password</Label>
-            <Input id="new" type="password" />
+            <Label for="current">Voucher</Label>
+            <Input id="current" type="text" uppercase/>
           </div>
         </CardContent>
         <CardFooter>
-          <Button>Save password</Button>
+          <Button w-full>Connect</Button>
         </CardFooter>
       </Card>
     </TabsContent>
   </Tabs>
   </div>
-
-  
 </template>
