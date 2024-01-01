@@ -16,6 +16,15 @@ import {
   TabsList,
   TabsTrigger,
 } from '@/components/ui/tabs'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog'
 import type { Package } from '@/types'
 
 // dummy packages
@@ -56,9 +65,38 @@ const packages: Package[] = [
               </CardDescription>
             </CardHeader>
             <CardFooter>
-              <Button w-full>
-                Buy Now
-              </Button>
+              <Dialog mx2>
+                <DialogTrigger as-child>
+                  <Button w-full>
+                    Buy Now
+                  </Button>
+                </DialogTrigger>
+                <DialogContent sm:max-w-[425px]>
+                  <DialogHeader>
+                    <DialogTitle>Buy Package</DialogTitle>
+                    <DialogDescription>
+                      Buy the {{ pkg.duration }} package for {{ pkg.devices }} devices for {{ pkg.price }} KSH
+                    </DialogDescription>
+                  </DialogHeader>
+                  <div grid gap-4 py-4>
+                    <div>
+                      <Label for="phone" flex flex-col gap-2>
+                        Phone
+                        <div flex  w-full>
+                          <div px2 py2 bg-gray:5 b border-border rounded-s>+254</div>
+                          <Input id="phone" type="phone" rounded-s-0/>
+                        </div>
+                        
+                      </Label>
+                    </div>
+                  </div>
+                  <DialogFooter>
+                    <Button type="submit" w-full>
+                      Pay
+                    </Button>
+                  </DialogFooter>
+                </DialogContent>
+              </Dialog>
             </CardFooter>
           </Card>
         </div>

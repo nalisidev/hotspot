@@ -13,6 +13,7 @@
   "dependencies": {
     "@unocss/reset": "^0.58.2",
     "@vueuse/core": "^10.7.1",
+    "lucide-vue-next": "^0.303.0",
     "vue": "^3.3.11"
   },
   "devDependencies": {
