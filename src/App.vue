@@ -22,19 +22,21 @@ import { Package } from '@/types'
 const packages: Package[] = [
   {
     duration: "2 hours",
-    devices: 1
+    devices: 1,
+    price: 100
   },
   {
     duration: "1 hour",
-    devices: 2
+    devices: 2,
+    price: 200
   }
 ]
 </script>
 
 <template>
-  <div h-screen w-full>
-    <Tabs default-value="account" class="w-[400px]">
-    <TabsList class="grid w-full grid-cols-2">
+  <div h-screen w-screen >
+    <Tabs default-value="packages" w-full md:w="460px" md:mx-auto>
+    <TabsList class="grid w-full grid-cols-2" rounded-sm>
       <TabsTrigger value="packages" >
         Packages
       </TabsTrigger>
@@ -43,11 +45,12 @@ const packages: Package[] = [
       </TabsTrigger>
     </TabsList>
     <TabsContent value="packages">
-      <div v-for="pkg in packages" my2>
+      <div v-for="pkg in packages" my2 mx2>
         <Card>
         <CardHeader>
-          <CardDescription>
-            {{ pkg.duration }} package • For {{ pkg.devices }} device(s)
+          <CardDescription flex gap-2 justify-between items-center>
+            <p>{{ pkg.duration }} package • For {{ pkg.devices }} device(s)</p>
+            <h2 font-bold text-lg>{{ pkg.price }} KSH</h2>
           </CardDescription>
         </CardHeader>
         <CardFooter>
@@ -57,7 +60,7 @@ const packages: Package[] = [
       </div>
     </TabsContent>
     <TabsContent value="voucher">
-      <Card>
+      <Card mx-2>
         <CardHeader>
           <CardTitle>Enter Voucher</CardTitle>
           <CardDescription>

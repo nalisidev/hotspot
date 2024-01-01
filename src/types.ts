@@ -8,6 +8,11 @@ export type Package = {
  * @param devices - The number of devices that can connect
  * 
  */
-    devices: number
+    devices: number,
+/**
+ * @param price - Price for the package
+ * 
+ */
+    price: number
 }
     
