@@ -8,7 +8,6 @@ import {
   transformerDirectives,
 } from 'unocss'
 import presetShadcn from './preset.shadcn'
-import { Theme } from 'unocss/preset-mini'
 
 export default defineConfig({
   shortcuts: {
