@@ -18,7 +18,7 @@ import {
 } from '@/components/ui/tabs'
 import { Package } from '@/types'
 
-//dummy
+// dummy packages
 const packages: Package[] = [
   {
     duration: "2 hours",
