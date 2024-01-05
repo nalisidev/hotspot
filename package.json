@@ -7,21 +7,21 @@
   "private": true,
   "exports": {
     ".": {
-      "import": "./dist/hotspot.js",
-      "require": "./dist/hotspot.umd.cjs"
+      "import": "./lib/web.js"
     }
   },
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "lib/web.js",
+  "types": "lib/web.d.ts",
   "files": [
-    "libcls"
+    "lib"
   ],
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build --mode production",
     "preview": "vite preview",
     "lint": "eslint .",
-    "format": "eslint . --fix"
+    "format": "eslint . --fix",
+    "release": "npx bumpp && npm publish"
   },
   "dependencies": {
     "@unocss/reset": "^0.58.2",
@@ -35,6 +35,7 @@
     "@types/node": "^20.10.6",
     "@unocss/preset-mini": "^0.58.2",
     "@vitejs/plugin-vue": "^4.5.2",
+    "bumpp": "^9.2.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "eslint": "npm:eslint-ts-patch@^8.56.0-0",
