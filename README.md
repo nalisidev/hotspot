@@ -16,7 +16,7 @@ There, you can change the container dimensions. Here is a code example:
 } }
 </script>
 <script type="module">
-  import Hotspot from 'https://cdn.jsdelivr.net/npm/wezeshanet-hotspot-js@0.0.3/lib/web.js'
+  import Hotspot from 'https://cdn.jsdelivr.net/npm/wezeshanet-hotspot-js@0.0.4/lib/web.js'
 
    Hotspot.initHotspot({
       packages: [
