@@ -5,7 +5,6 @@ import { registerWebComponents } from './register'
 import { injectHotspotInWindow, parseHotspot } from './window'
 
 
-
 registerWebComponents()
 
 const hotspot = parseHotspot()

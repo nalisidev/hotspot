@@ -3,7 +3,8 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import UnoCSS from 'unocss/vite'
 import dts from 'vite-plugin-dts'
-import { libInjectCss } from 'vite-plugin-lib-inject-css'
+import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
+
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -12,8 +13,33 @@ export default defineConfig({
       '@/': `${resolve(__dirname, 'src')}/`,
     },
   },
+  build: {
+    lib: {
+      entry: 'src/web.ts',
+      formats: ['es'],
+      fileName: 'web',
+    },
+    sourcemap: true,
+    // Reduce bloat from legacy polyfills.
+    target: 'esnext',
+    // Leave minification up to applications.
+    minify: true,
+    outDir: 'lib',
+    rollupOptions: {
+      external: ['vue']
+    }
+  },
   plugins: [
-    vue({ isProduction: true }), 
+    vue({ 
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => tag.includes('-')
+        },
+      },
+      reactivityTransform: true,
+    }), 
     UnoCSS(),
+    dts(),
+    cssInjectedByJsPlugin(),
   ],
 })

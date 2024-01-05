@@ -58,12 +58,12 @@ devDependencies:
   vite:
     specifier: ^5.0.8
     version: 5.0.10(@types/node@20.10.6)
+  vite-plugin-css-injected-by-js:
+    specifier: ^3.3.1
+    version: 3.3.1(vite@5.0.10)
   vite-plugin-dts:
     specifier: ^3.7.0
     version: 3.7.0(@types/node@20.10.6)(typescript@5.3.3)(vite@5.0.10)
-  vite-plugin-lib-inject-css:
-    specifier: ^1.3.0
-    version: 1.3.0(vite@5.0.10)
   vue-tsc:
     specifier: ^1.8.25
     version: 1.8.27(typescript@5.3.3)
@@ -3941,6 +3941,14 @@ packages:
     engines: {node: '>= 0.10'}
     dev: true
 
+  /vite-plugin-css-injected-by-js@3.3.1(vite@5.0.10):
+    resolution: {integrity: sha512-PjM/X45DR3/V1K1fTRs8HtZHEQ55kIfdrn+dzaqNBFrOYO073SeSNCxp4j7gSYhV9NffVHaEnOL4myoko0ePAg==}
+    peerDependencies:
+      vite: '>2.0.0-0'
+    dependencies:
+      vite: 5.0.10(@types/node@20.10.6)
+    dev: true
+
   /vite-plugin-dts@3.7.0(@types/node@20.10.6)(typescript@5.3.3)(vite@5.0.10):
     resolution: {integrity: sha512-np1uPaYzu98AtPReB8zkMnbjwcNHOABsLhqVOf81b3ol9b5M2wPcAVs8oqPnOpr6Us+7yDXVauwkxsk5+ldmRA==}
     engines: {node: ^14.18.0 || >=16.0.0}
@@ -3963,16 +3971,6 @@ packages:
       - '@types/node'
       - rollup
       - supports-color
-    dev: true
-
-  /vite-plugin-lib-inject-css@1.3.0(vite@5.0.10):
-    resolution: {integrity: sha512-Rldq36U9TDlpDom3yoLybfJtzn897+oMKdX0+fxbVYnYjRGnTtaFfnMmfOckH8GQ3cvGAKv9Ai1PWyE0amIbjg==}
-    peerDependencies:
-      vite: '*'
-    dependencies:
-      magic-string: 0.30.5
-      picocolors: 1.0.0
-      vite: 5.0.10(@types/node@20.10.6)
     dev: true
 
   /vite@5.0.10(@types/node@20.10.6):

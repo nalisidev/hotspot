@@ -1,15 +1,12 @@
+import styles from './style.css?inline'
 import { defineCustomElement } from 'vue'
-import { Hotspot } from './components'
-import { defaultHotspotProps } from './constants'
-import type { Package } from './types'
+import Hotspot from './components/hotspot.vue'
 
-export const packages: Package[] = []
-
-const MyHotspot = defineCustomElement(Hotspot)
+//@ts-ignore vendor 
+const MyHotspot =  defineCustomElement({...Hotspot, styles: [styles]})
 
 export function registerWebComponents() {
   if (typeof window === 'undefined')
     return
-  // @ts-expect-error element incorect type
-  customElements.define('hotspot-standard', MyHotspot, defaultHotspotProps)
+  customElements.define('hotspot-standard', MyHotspot)
 }

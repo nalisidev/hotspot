@@ -117,3 +117,5 @@ const props = defineProps<HotspotProps>()
     </Tabs>
   </div>
 </template>
+
+
