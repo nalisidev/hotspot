@@ -4,7 +4,6 @@
   "version": "0.0.1",
   "description": "Javascript library to display hotspot ui for wezeshanet",
   "sideEffects": false,
-  "private": true,
   "exports": {
     ".": {
       "import": "./lib/web.js"
