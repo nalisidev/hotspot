@@ -11,6 +11,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@/': `${resolve(__dirname, 'src')}/`,
+      vue: 'vue/dist/vue.esm-browser.prod.js',
     },
   },
   build: {
@@ -25,9 +26,9 @@ export default defineConfig({
     // Leave minification up to applications.
     minify: true,
     outDir: 'lib',
-    rollupOptions: {
-      external: ['vue']
-    }
+    // rollupOptions: {
+    //   external: ['vue']
+    // }
   },
   plugins: [
     vue({ 

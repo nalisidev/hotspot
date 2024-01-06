@@ -78,7 +78,7 @@ const props = defineProps<HotspotProps>()
                           Phone
                           <div class="flex w-full">
                             <div class="px-2 py-2 bg-accent text-muted-foreground border border-border rounded-s">+254</div>
-                            <Input id="phone" type="phone" class="rounded-s-[0px]" />
+                            <Input id="phone" type="phone" name="phone" class="rounded-s-[0px]" />
                           </div>
                         </Label>
                       </div>
@@ -105,13 +105,13 @@ const props = defineProps<HotspotProps>()
           </CardHeader>
           <form :action="props.voucherUrl">
             <CardContent class="space-y-2">
-              <div class="space-y-1">
-                <Label for="current">Voucher</Label>
-                <Input id="current" type="text" class="uppercase" />
-              </div>
+                <Label for="voucher" class="space-y-1">
+                  Voucher
+                  <Input id="current" name="voucher" type="text" class="uppercase" />
+                </Label>
             </CardContent>
             <CardFooter>
-              <Button class="w-full">
+              <Button type="submit" class="w-full">
                 Connect
               </Button>
             </CardFooter>
