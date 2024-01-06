@@ -1,7 +1,7 @@
 {
   "name": "wezeshanet-hotspot-js",
   "type": "module",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Javascript library to display hotspot ui for wezeshanet",
   "sideEffects": false,
   "exports": {
@@ -20,7 +20,7 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "eslint . --fix",
-    "release": "npx bumpp && npm publish"
+    "release": "pnpm build && npx bumpp && npm publish"
   },
   "dependencies": {
     "@unocss/reset": "^0.58.2",

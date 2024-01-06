@@ -13,11 +13,12 @@ export interface Package {
    * @param price - Price for the package
    *
    */
-  price: number
+  price: number,
 }
 
 export interface HotspotProps {
   packages: Package[]
   voucherUrl: string | undefined
   packagePurchaseUrl: string | undefined
+  theme?: 'green' | undefined
 }

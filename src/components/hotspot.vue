@@ -32,9 +32,9 @@ const props = defineProps<HotspotProps>()
 </script>
 
 <template>
-  <div class="h-screen w-screen">
+  <div class="h-screen w-screen bg-background">
     <Tabs default-value="packages" class="w-full md:w-[460px] md:mx-auto">
-      <TabsList class="grid w-full grid-cols-2 rounded-sm">
+      <TabsList class="grid w-full grid-cols-2 rounded-sm sm:rounded-[0px]">
         <TabsTrigger value="packages">
           Packages
         </TabsTrigger>
@@ -60,14 +60,18 @@ const props = defineProps<HotspotProps>()
                     Buy Now
                   </Button>
                 </DialogTrigger>
-                <DialogContent class="sm:max-w-[425px]">
+                <DialogContent 
+                class="sm:max-w-[425px]" 
+                @interact-outside.prevent 
+                @focus-outside.prevent
+                @pointer-down-outside.prevent>
                   <DialogHeader>
                     <DialogTitle>Buy Package</DialogTitle>
                     <DialogDescription>
                       Buy the {{ pkg.duration }} package for {{ pkg.devices }} devices for {{ pkg.price }} KSH
                     </DialogDescription>
                   </DialogHeader>
-                  <form>
+                  <form :action="props.packagePurchaseUrl">
                     <div class="grid gap-4 py-4">
                       <div>
                         <Label for="phone" class="flex flex-col gap-2">
@@ -99,7 +103,7 @@ const props = defineProps<HotspotProps>()
               Connect back to your internet using the voucher.
             </CardDescription>
           </CardHeader>
-          <form>
+          <form :action="props.voucherUrl">
             <CardContent class="space-y-2">
               <div class="space-y-1">
                 <Label for="current">Voucher</Label>
