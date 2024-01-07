@@ -5,13 +5,12 @@ import UnoCSS from 'unocss/vite'
 import dts from 'vite-plugin-dts'
 import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
 
-
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
     alias: {
       '@/': `${resolve(__dirname, 'src')}/`,
-      vue: 'vue/dist/vue.esm-browser.prod.js',
+      'vue': 'vue/dist/vue.esm-browser.prod.js',
     },
   },
   build: {
@@ -26,21 +25,23 @@ export default defineConfig({
     // Leave minification up to applications.
     minify: true,
     outDir: 'lib',
-    // rollupOptions: {
-    //   external: ['vue']
-    // }
   },
   plugins: [
-    vue({ 
+    vue({
       template: {
         compilerOptions: {
-          isCustomElement: (tag) => tag.includes('-')
+          isCustomElement: tag => tag.includes('-'),
         },
       },
       reactivityTransform: true,
-    }), 
+    }),
     UnoCSS(),
-    dts(),
+    dts({
+      staticImport: true,
+      insertTypesEntry: true,
+      cleanVueFileName: true,
+      copyDtsFiles: false,
+    }),
     cssInjectedByJsPlugin(),
   ],
 })

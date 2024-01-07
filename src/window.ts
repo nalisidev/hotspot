@@ -9,7 +9,7 @@ export function initHotspot(props: HotspotProps & { id?: string }) {
   Object.assign(hotspotElement, props)
 }
 
-type Hotspot = {
+interface Hotspot {
   initHotspot: typeof initHotspot
 }
 

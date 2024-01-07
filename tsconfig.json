@@ -4,14 +4,17 @@
     "jsx": "preserve",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "useDefineForClassFields": true,
+    "baseUrl": ".",
     "module": "ESNext",
-    "outDir": "lib",
 
     /* Bundler mode */
     "moduleResolution": "bundler",
 
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["src/*"],
+      "radix-vue": ["node_modules/radix-vue"],
+      "*": ["node_modules/*"]
+
     },
     "resolveJsonModule": true,
     "allowImportingTsExtensions": true,
@@ -20,7 +23,9 @@
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "declaration": true,
     "noEmit": true,
+    "outDir": "lib",
     "isolatedModules": true,
     "skipLibCheck": true
   },

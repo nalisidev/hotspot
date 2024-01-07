@@ -13,7 +13,17 @@ export interface Package {
    * @param price - Price for the package
    *
    */
-  price: number,
+  amount: number
+  /**
+   * @param name - Pacakage name
+   *
+   */
+  name: string
+  /**
+   * @param id - Server identifier
+   *
+   */
+  id: string
 }
 
 export interface HotspotProps {

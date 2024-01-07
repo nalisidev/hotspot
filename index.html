@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hotspot</title>
+  </head>
+  <body>
+    <script type="module">
+      import Hotspot from "./src/web.ts";
+
+      Hotspot.initHotspot({
+        packages: [
+          {
+            amount: 200,
+            devices: 2,
+            duration: "2 hours",
+          },
+          {
+            amount: 200,
+            devices: 2,
+            duration: "2 hours",
+          },
+          {
+            amount: 200,
+            devices: 2,
+            duration: "2 hours",
+          },
+          {
+            amount: 200,
+            devices: 2,
+            duration: "2 hours",
+          },
+          {
+            amount: 200,
+            devices: 2,
+            duration: "2 hours",
+          },
+          {
+            amount: 200,
+            devices: 2,
+            duration: "2 hours",
+          },
+          {
+            amount: 200,
+            devices: 2,
+            duration: "2 hours",
+          },
+          {
+            amount: 200,
+            devices: 2,
+            duration: "2 hours",
+          },
+          {
+            amount: 200,
+            devices: 2,
+            duration: "2 hours",
+          },
+          {
+            amount: 200,
+            devices: 2,
+            duration: "2 hours",
+          },
+        ],
+        voucherUrl: "http://localhost:3000/voucher",
+        packagePurchaseUrl: "http://localhost:3000/purchase",
+      });
+    </script>
+
+    <hotspot-standard>
+      <modal-standard></modal-standard>
+    </hotspot-standard>
+  </body>
+</html>

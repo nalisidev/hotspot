@@ -7,7 +7,7 @@ import {
   CardDescription,
   CardFooter,
   CardHeader,
-  CardTitle
+  CardTitle,
 } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -15,20 +15,14 @@ import {
   Tabs,
   TabsContent,
   TabsList,
-  TabsTrigger
+  TabsTrigger,
 } from '@/components/ui/tabs'
 import {
   Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger
+  DialogTrigger,
 } from '@/components/ui/dialog'
 
 const props = defineProps<HotspotProps>()
-
 </script>
 
 <template>
@@ -43,13 +37,13 @@ const props = defineProps<HotspotProps>()
         </TabsTrigger>
       </TabsList>
       <TabsContent value="packages">
-        <div v-for="pkg, idx in props.packages" :key="idx" class="my-2 mx-2">
-          <Card>
+        <UiScrollArea>
+          <Card v-for="pkg, idx in props.packages" :key="idx" class="my-2 mx-2">
             <CardHeader>
               <CardDescription class="flex gap-2 justify-between items-center">
                 <p>{{ pkg.duration }} package • For {{ pkg.devices }} device(s)</p>
                 <h2 font-bold text-lg>
-                  {{ pkg.price }} KSH
+                  {{ pkg.amount }} KSH
                 </h2>
               </CardDescription>
             </CardHeader>
@@ -60,15 +54,16 @@ const props = defineProps<HotspotProps>()
                     Buy Now
                   </Button>
                 </DialogTrigger>
-                <DialogContent 
-                class="sm:max-w-[425px]" 
-                @interact-outside.prevent 
-                @focus-outside.prevent
-                @pointer-down-outside.prevent>
+                <DialogContent
+                  class="sm:max-w-[425px]"
+                  @interact-outside.prevent
+                  @focus-outside.prevent
+                  @pointer-down-outside.prevent
+                >
                   <DialogHeader>
                     <DialogTitle>Buy Package</DialogTitle>
                     <DialogDescription>
-                      Buy the {{ pkg.duration }} package for {{ pkg.devices }} devices for {{ pkg.price }} KSH
+                      Buy the {{ pkg.duration }} package for {{ pkg.devices }} devices for {{ pkg.amount }} KSH
                     </DialogDescription>
                   </DialogHeader>
                   <form :action="props.packagePurchaseUrl">
@@ -93,7 +88,8 @@ const props = defineProps<HotspotProps>()
               </Dialog>
             </CardFooter>
           </Card>
-        </div>
+        </UiScrollArea>
+        =
       </TabsContent>
       <TabsContent value="voucher">
         <Card class="mx-2">
@@ -105,10 +101,10 @@ const props = defineProps<HotspotProps>()
           </CardHeader>
           <form :action="props.voucherUrl">
             <CardContent class="space-y-2">
-                <Label for="voucher" class="space-y-1">
-                  Voucher
-                  <Input id="current" name="voucher" type="text" class="uppercase" />
-                </Label>
+              <Label for="voucher" class="space-y-1">
+                Voucher
+                <Input id="current" name="voucher" type="text" class="uppercase" />
+              </Label>
             </CardContent>
             <CardFooter>
               <Button type="submit" class="w-full">
@@ -121,5 +117,3 @@ const props = defineProps<HotspotProps>()
     </Tabs>
   </div>
 </template>
-
-
