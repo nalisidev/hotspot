@@ -11,3 +11,4 @@ preset.shadcn.ts
 pnpm-lock.yaml
 bump.config.ts
 .vscode
+index.html

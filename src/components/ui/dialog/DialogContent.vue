@@ -2,8 +2,7 @@
 import {
   DialogClose,
   DialogContent,
-  type DialogContentEmits,
-  type DialogContentProps,
+  type PrimitiveProps,
   DialogOverlay,
   DialogPortal,
   useEmitAsProps,
@@ -11,8 +10,84 @@ import {
 import { X } from 'lucide-vue-next'
 import { cn } from '@/lib/utils'
 
+export interface DismissableLayerProps extends PrimitiveProps {
+    /**
+     * When `true`, hover/focus/click interactions will be disabled on elements outside
+     * the `DismissableLayer`. Users will need to click twice on outside elements to
+     * interact with them: once to close the `DismissableLayer`, and again to trigger the element.
+     */
+    disableOutsidePointerEvents?: boolean;
+}
+
+export interface DialogContentImplProps extends DismissableLayerProps {
+    /**
+     * Used to force mounting when more control is needed. Useful when
+     * controlling transntion with Vue native transition or other animation libraries.
+     */
+    forceMount?: boolean;
+    /**
+     * When `true`, focus cannot escape the `Content` via keyboard,
+     * pointer, or a programmatic focus.
+     * @defaultValue false
+     */
+    trapFocus?: boolean;
+}
+
+export interface DialogContentProps extends DialogContentImplProps {
+    /**
+     * Used to force mounting when more control is needed. Useful when
+     * controlling animation with Vue animation libraries.
+     */
+    forceMount?: boolean;
+}
+
+export type PointerDownOutsideEvent = CustomEvent<{
+    originalEvent: PointerEvent;
+}>;
+export type FocusOutsideEvent = CustomEvent<{
+    originalEvent: FocusEvent;
+}>;
+
+type DialogEmits = {
+    /**
+     * Event handler called when the escape key is down.
+     * Can be prevented.
+     */
+     'escapeKeyDown': [event: KeyboardEvent];
+    /**
+     * Event handler called when the a `pointerdown` event happens outside of the `DismissableLayer`.
+     * Can be prevented.
+     */
+    'pointerDownOutside': [event: PointerDownOutsideEvent];
+    /**
+     * Event handler called when the focus moves outside of the `DismissableLayer`.
+     * Can be prevented.
+     */
+    'focusOutside': [event: FocusOutsideEvent];
+    /**
+     * Event handler called when an interaction happens outside the `DismissableLayer`.
+     * Specifically, when a `pointerdown` event happens outside or focus moves outside of it.
+     * Can be prevented.
+     */
+    'interactOutside': [event: PointerDownOutsideEvent | FocusOutsideEvent];
+    /**
+     * Handler called when the `DismissableLayer` should be dismissed
+     */
+    'dismiss': [];
+    /**
+     * Event handler called when auto-focusing on open.
+     * Can be prevented.
+     */
+    'openAutoFocus': [event: Event];
+    /**
+     * Event handler called when auto-focusing on close.
+     * Can be prevented.
+     */
+    'closeAutoFocus': [event: Event];
+}
+
 const props = defineProps<DialogContentProps & { class?: string }>()
-const emits = defineEmits<DialogContentEmits>()
+const emits = defineEmits<DialogEmits>()
 
 const emitsAsProps = useEmitAsProps(emits)
 </script>
