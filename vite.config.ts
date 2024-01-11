@@ -11,6 +11,7 @@ export default defineConfig({
     alias: {
       '@/': `${resolve(__dirname, 'src')}/`,
       'vue': 'vue/dist/vue.esm-browser.prod.js',
+      'radix-vue': 'radix-vue'
     },
   },
   build: {
