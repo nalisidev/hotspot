@@ -12,3 +12,5 @@ pnpm-lock.yaml
 bump.config.ts
 .vscode
 index.html
+src
+node_modules
