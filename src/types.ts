@@ -29,6 +29,8 @@ export interface Package {
 export interface HotspotProps {
   packages: Package[]
   voucherUrl: string | undefined
-  packagePurchaseUrl: string | undefined
+  packagePurchaseUrl: string | undefined,
+  csrfToken: string,
+  logo?: string
   theme?: 'green' | undefined
 }

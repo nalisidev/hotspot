@@ -6,8 +6,10 @@
     <title>Hotspot</title>
   </head>
   <body>
+    <!-- <div id="app"></div>
+    <script type="module" src="./src/web.ts"></script> -->
     <script type="module">
-      import Hotspot from "/lib/web.js";
+      import Hotspot from "/src/web.ts";
 
       Hotspot.initHotspot({
         packages: [
@@ -24,11 +26,13 @@
         ],
         voucherUrl: "http://localhost:3000/voucher",
         packagePurchaseUrl: "http://localhost:3000/purchase",
+        csrfToken: '',
+        logo: 'https://th.bing.com/th/id/R.e1d709fc01d327cd5d8a429b27fc41b6?rik=KSdagOU4oA61ug&pid=ImgRaw&r=0' //url or toDataUrl(imagePath) or undefined
       });
     </script>
 
     <hotspot-standard>
-      <hotspot-modal></hotspot-modal>
     </hotspot-standard>
   </body>
 </html>
+

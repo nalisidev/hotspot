@@ -29,12 +29,19 @@ import {
 
 const props = defineProps<HotspotProps>()
 
+const isImageSrc = (src: string) =>
+  src.startsWith('http') || src.startsWith('data:image/svg+xml')
+
 </script>
 
 <template>
   <div class="h-screen w-full bg-background">
+    <div class="w-full md:w-[460px] md:mx-auto rounded-0 bg-muted p-4 flex items-center justify-center">
+      <img v-if="!isImageSrc(props.logo || '')" src="../assets/logo.png" style="height: 80px; "/>
+      <img :src="props.logo" style="height: 50px; "/>
+    </div>
     <Tabs default-value="packages" class="w-full md:w-[460px] md:mx-auto">
-      <TabsList class="grid w-full grid-cols-2 rounded-sm sm:rounded-[0px]">
+      <TabsList class="grid w-full grid-cols-2 sm:rounded-b-sm rounded-[0px] ">
         <TabsTrigger value="packages">
           Packages
         </TabsTrigger>
@@ -71,7 +78,7 @@ const props = defineProps<HotspotProps>()
                       Buy the {{ pkg.duration }} package for {{ pkg.devices }} devices for {{ pkg.amount }} KSH
                     </DialogDescription>
                   </DialogHeader>
-                  <form :action="props.packagePurchaseUrl">
+                  <form :action="props.packagePurchaseUrl" method="POST">
                     <div class="grid gap-4 py-4">
                       <div>
                         <Label for="phone" class="flex flex-col gap-2">
@@ -81,6 +88,7 @@ const props = defineProps<HotspotProps>()
                             <Input id="phone" type="number" name="phone" class="rounded-s-[0px]" />
                           </div>
                         </Label>
+                        <input type="hidden" name="_token" :value="props.csrfToken" />
                       </div>
                     </div>
                     <DialogFooter>
@@ -103,12 +111,13 @@ const props = defineProps<HotspotProps>()
               Connect back to your internet using the voucher.
             </CardDescription>
           </CardHeader>
-          <form :action="props.voucherUrl">
+          <form :action="props.voucherUrl" method="POST">
             <CardContent class="space-y-2">
                 <Label for="voucher" class="space-y-1">
                   Voucher
                   <Input id="current" name="voucher" type="text" class="uppercase" />
                 </Label>
+                <input type="hidden" name="_token" :value="props.csrfToken" />
             </CardContent>
             <CardFooter>
               <Button type="submit" class="w-full">

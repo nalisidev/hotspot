@@ -4,4 +4,6 @@ export const defaultHotspotProps: HotspotProps = {
   packagePurchaseUrl: undefined,
   voucherUrl: undefined,
   packages: [],
+  csrfToken: '',
+  logo: '',
 }

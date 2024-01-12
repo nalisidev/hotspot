@@ -13,4 +13,5 @@ bump.config.ts
 .vscode
 index.html
 src
+dist
 node_modules
