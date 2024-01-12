@@ -54,7 +54,7 @@ const props = defineProps<HotspotProps>()
               </CardDescription>
             </CardHeader>
             <CardFooter>
-              <Dialog class="mx2">
+              <Dialog class="mx2" :modal="true">
                 <DialogTrigger as-child>
                   <Button class="w-full">
                     Buy Now

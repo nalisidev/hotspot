@@ -11,6 +11,7 @@ export function initHotspot(props: HotspotProps & { id?: string }) {
 
 interface Hotspot {
   initHotspot: typeof initHotspot
+  
 }
 
 declare const window:
