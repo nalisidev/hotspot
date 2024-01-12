@@ -21,7 +21,7 @@ export default defineConfig({
     },
     sourcemap: true,
     // Reduce bloat from legacy polyfills.
-    // target: 'esnext',
+    target: 'esnext',
     // Leave minification up to applications.
     minify: true,
     outDir: 'lib',

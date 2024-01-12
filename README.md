@@ -9,34 +9,73 @@ You can get the standard HTML and Javascript code by clicking on the "HTML & Jav
 There, you can change the container dimensions. Here is a code example:
 
 ```html
-<script type="importmap">
-{ "imports": {
-      "vue":        "https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.41/vue.esm-browser.prod.js",
-      "vue-router": "https://cdnjs.cloudflare.com/ajax/libs/vue-router/4.1.5/vue-router.esm-browser.min.js"
-} }
-</script>
-<script type="module">
-  import Hotspot from 'https://cdn.jsdelivr.net/npm/wezeshanet-hotspot-js@0.0.4/lib/web.js'
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hotspot</title>
+  </head>
+  <body>
+    <script type="module">
+      import Hotspot from "/lib/web.js";
 
-   Hotspot.initHotspot({
-      packages: [
-         {
-         price: 200,
-         devices: 2,
-         duration: "2 hours"
-         },
-         {
-         price: 200,
-         devices: 2,
-         duration: "2 hours"
-         },
-      ],
-      voucherUrl: 'http://localhost:3000/voucher',
-      packagePurchaseUrl: 'http://localhost:3000/purchase'
-   })
-</script>
+      Hotspot.initHotspot({
+        packages: [
+          {
+            amount: 200,
+            devices: 2,
+            duration: "2 hours",
+            name: "Package One",
+            id: 1
+          },
+          {
+            amount: 200,
+            devices: 2,
+            duration: "2 hours",
+            name: "Package Two",
+            id: 2
+          },
+          {
+            amount: 200,
+            devices: 2,
+            duration: "2 hours",
+            name: "Package Three",
+            id: 3
+          },
+          {
+            amount: 200,
+            devices: 2,
+            duration: "2 hours",
+            name: "Package Four",
+            id: 4
+          },
+          {
+            amount: 200,
+            devices: 2,
+            duration: "2 hours",
+            name: "Package Five",
+            id: 5
+          },
+          {
+            amount: 200,
+            devices: 2,
+            duration: "2 hours",
+            name: "Package Six",
+            id: 6
+          },
+        ],
+        voucherUrl: "http://localhost:3000/voucher",
+        packagePurchaseUrl: "http://localhost:3000/purchase",
+        csrfToken: '',
+        logo: 'https://th.bing.com/th/id/R.e1d709fc01d327cd5d8a429b27fc41b6?rik=KSdagOU4oA61ug&pid=ImgRaw&r=0' //url or toDataUrl(imagePath) or undefined
+      });
+    </script>
 
-<hotspot-standard style="width: 100%; height: 600px; "></hotspot-standard>
+    <hotspot-standard>
+    </hotspot-standard>
+  </body>
+</html>
 ```
 
 This code is creating a container with a 100% width (will match parent width) and 600px height.

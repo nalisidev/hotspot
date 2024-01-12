@@ -9,7 +9,7 @@
     <!-- <div id="app"></div>
     <script type="module" src="./src/web.ts"></script> -->
     <script type="module">
-      import Hotspot from "/src/web.ts";
+      import Hotspot from "/lib/web.js";
 
       Hotspot.initHotspot({
         packages: [
@@ -17,11 +17,43 @@
             amount: 200,
             devices: 2,
             duration: "2 hours",
+            name: "Package One",
+            id: 1
           },
           {
             amount: 200,
             devices: 2,
             duration: "2 hours",
+            name: "Package Two",
+            id: 2
+          },
+          {
+            amount: 200,
+            devices: 2,
+            duration: "2 hours",
+            name: "Package Three",
+            id: 3
+          },
+          {
+            amount: 200,
+            devices: 2,
+            duration: "2 hours",
+            name: "Package Four",
+            id: 4
+          },
+          {
+            amount: 200,
+            devices: 2,
+            duration: "2 hours",
+            name: "Package Five",
+            id: 5
+          },
+          {
+            amount: 200,
+            devices: 2,
+            duration: "2 hours",
+            name: "Package Six",
+            id: 6
           },
         ],
         voucherUrl: "http://localhost:3000/voucher",

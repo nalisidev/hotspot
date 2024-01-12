@@ -23,7 +23,7 @@ export interface Package {
    * @param id - Server identifier
    *
    */
-  id: string
+  id: number
 }
 
 export interface HotspotProps {
