@@ -96,6 +96,7 @@ const isImageSrc = (src: string) =>
                                 <Input id="phone" type="number" name="phone" class="rounded-s-[0px]" />
                               </div>
                             </Label>
+                            <input type="hidden" name="json" :value="true"/>
                             <input type="hidden" name="package" :value="pkg.id"/>
                             <input type="hidden" name="obtainable" value="ACCESS"/>
                             <input type="hidden" name="payment_method" value="Mpesa"/>
