@@ -78,7 +78,7 @@ const props = defineProps<HotspotProps>()
                           Phone
                           <div class="flex w-full">
                             <div class="px-2 py-2 bg-accent text-muted-foreground border border-border rounded-s">+254</div>
-                            <Input id="phone" type="phone" name="phone" class="rounded-s-[0px]" />
+                            <Input id="phone" type="number" name="phone" class="rounded-s-[0px]" />
                           </div>
                         </Label>
                       </div>
@@ -121,5 +121,23 @@ const props = defineProps<HotspotProps>()
     </Tabs>
   </div>
 </template>
+
+<style>
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+input:focus::placeholder {
+    color: transparent;
+}
+</style>
 
 
