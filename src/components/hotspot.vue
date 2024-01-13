@@ -56,7 +56,7 @@ const isImageSrc = (src: string) =>
       <!-- content -->
       <div class="w-full">
         <TabsContent value="packages">
-          <ScrollArea class="w-full md:w-[460px]" style="height: calc(100vh - 13rem);">
+          <ScrollArea class="w-full md:w-[460px]" style="height: calc(100vh - 13.5rem);">
             <div v-for="pkg, idx in props.packages" :key="idx" class="my-2 mx-2">
               <Card>
                 <CardHeader>

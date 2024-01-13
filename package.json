@@ -1,7 +1,7 @@
 {
   "name": "wezeshanet-hotspot-js",
   "type": "module",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Javascript library to display hotspot ui for wezeshanet",
   "sideEffects": false,
   "exports": {
