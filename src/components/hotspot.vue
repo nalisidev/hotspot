@@ -56,7 +56,7 @@ const isImageSrc = (src: string) =>
       <!-- content -->
       <div class="w-full">
         <TabsContent value="packages">
-          <ScrollArea class="w-full md:w-[460px]" style="height: calc(100vh - 12rem);">
+          <ScrollArea class="w-full md:w-[460px]" style="height: calc(100vh - 12.5rem);">
             <div v-for="pkg, idx in props.packages" :key="idx" class="my-2 mx-2">
               <Card>
                 <CardHeader>
@@ -153,17 +153,17 @@ const isImageSrc = (src: string) =>
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 /* Firefox */
 input[type=number] {
-    -moz-appearance: textfield;
+  -moz-appearance: textfield;
 }
 
 input:focus::placeholder {
-    color: transparent;
+  color: transparent;
 }
 
 a {
