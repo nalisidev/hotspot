@@ -53,7 +53,7 @@ const handlePurchase = async (e: SubmitEvent) => {
   processing.value = true
 
   setTimeout(() => {
-    fetch('https://google.com', {  
+    fetch(action, {  
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
