@@ -42,4 +42,6 @@ export const defaultHotspotProps: HotspotProps = {
   ],
   csrfToken: '',
   logo: '',
+  dark: true,
+  theme: 'orange'
 }

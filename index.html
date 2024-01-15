@@ -1,64 +1,57 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hotspot</title>
   </head>
   <body>
-    <!-- <div id="app"></div>
-    <script type="module" src="./src/web.ts"></script> -->
     <script type="module">
-      import Hotspot from "/src/web.ts";
+      import Hotspot from "./src/web.ts";
 
       Hotspot.initHotspot({
+        packagePurchaseUrl: undefined,
+        voucherUrl: undefined,
         packages: [
           {
             amount: 200,
             devices: 2,
             duration: "2 hours",
-            name: "Package One",
-            id: 1
+            id: 1,
+            name: 'packageName'
           },
           {
             amount: 200,
             devices: 2,
             duration: "2 hours",
-            name: "Package Two",
-            id: 2
+            id: 1,
+            name: 'packageName'
           },
           {
             amount: 200,
             devices: 2,
             duration: "2 hours",
-            name: "Package Three",
-            id: 3
+            id: 1,
+            name: 'packageName'
           },
           {
             amount: 200,
             devices: 2,
             duration: "2 hours",
-            name: "Package Four",
-            id: 4
+            id: 1,
+            name: 'packageName'
           },
           {
             amount: 200,
             devices: 2,
             duration: "2 hours",
-            name: "Package Five",
-            id: 5
-          },
-          {
-            amount: 200,
-            devices: 2,
-            duration: "2 hours",
-            name: "Package Six",
-            id: 6
+            id: 1,
+            name: 'packageName'
           },
         ],
-        voucherUrl: "http://localhost:3000/voucher",
-        packagePurchaseUrl: "http://localhost:3000/purchase",
         csrfToken: '',
+        dark: true,
+        theme: 'orange',
         logo: 'https://th.bing.com/th/id/R.e1d709fc01d327cd5d8a429b27fc41b6?rik=KSdagOU4oA61ug&pid=ImgRaw&r=0' //url or toDataUrl(imagePath) or undefined
       });
     </script>

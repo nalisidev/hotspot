@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { HotspotProps } from '@/types'
+import { type HotspotProps, themes } from '@/types'
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -27,14 +27,77 @@ import {
   DialogTrigger
 } from '@/components/ui/dialog'
 import { ScrollArea } from '@/components/ui/scroll-area'
+import { onMounted, onUpdated, ref } from 'vue'
+
+const buyDisabled = ref(false)
+
+const submitted = ref(false)
+const processing = ref(false)
+const success = ref(false)
+const root = ref<HTMLElement>()
 
 const props = defineProps<HotspotProps>()
 
 const isImageSrc = (src: string) =>
   src.startsWith('http') || src.startsWith('data:image/svg+xml')
 
-</script>
+const retry = () => submitted.value = false
 
+const handlePurchase = async (e: SubmitEvent) => {
+  e.preventDefault()
+  submitted.value = true
+  buyDisabled.value = true
+
+  // @ts-ignore
+  const action = e.target.action
+  processing.value = true
+
+  setTimeout(() => {
+    fetch('https://google.com', {  
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    }).then((value) => {
+      processing.value = false
+      buyDisabled.value = false
+      //@ts-ignore
+      if(value.status === 'success') {
+        success.value = true
+      } else {
+        success.value = false
+      }
+      console.log(value)
+    }).catch((e) => {
+      processing.value = false
+      buyDisabled.value = false
+      console.log(e)
+    })
+  }, 4000)
+}
+
+onUpdated(() => {
+  console.log(props)
+  if(props.dark) {
+    root.value!.classList.add('dark')
+  } else {
+    root.value!.classList.remove('dark')
+  }
+  if(props.theme) {
+    console.log(props.theme)
+    root.value!.classList.remove('theme-blue')
+    root.value!.classList.add(themes[props.theme])
+  } else {
+
+  }
+})
+
+onMounted(() => {
+  root.value = document.documentElement
+  root.value.classList.add('theme-blue')
+})
+</script>
+ 
 <template>
   <div class="h-100dvh h-screen w-full bg-background">
     <Tabs default-value="packages" class="w-full md:w-[460px] md:mx-auto  of-hidden grid grid-rows-[auto_1fr_auto] min-h-[100vh]">
@@ -56,7 +119,7 @@ const isImageSrc = (src: string) =>
       <!-- content -->
       <div class="w-full">
         <TabsContent value="packages">
-          <ScrollArea class="w-full md:w-[460px]" style="height: calc(100vh - 13.5rem);">
+          <ScrollArea class="w-full md:w-[460px]" style="height: calc(100vh - 12.5rem);">
             <div v-for="pkg, idx in props.packages" :key="idx" class="my-2 mx-2">
               <Card>
                 <CardHeader>
@@ -69,14 +132,15 @@ const isImageSrc = (src: string) =>
                   </CardDescription>
                 </CardHeader>
                 <CardFooter>
-                  <Dialog class="mx2" :modal="true">
+                  <Dialog class="mx2" >
                     <DialogTrigger as-child>
                       <Button class="w-full">
                         Buy Now
                       </Button>
                     </DialogTrigger>
-                    <DialogContent 
-                    class="sm:max-w-[425px]" 
+                    <DialogContent
+                    v-if="!submitted"
+                    class="sm:max-w-[425px] " 
                     @interact-outside.prevent 
                     @focus-outside.prevent
                     @pointer-down-outside.prevent>
@@ -86,7 +150,7 @@ const isImageSrc = (src: string) =>
                           Buy the {{ pkg.duration }} package for {{ pkg.devices }} devices for {{ pkg.amount }} KSH
                         </DialogDescription>
                       </DialogHeader>
-                      <form :action="props.packagePurchaseUrl" method="POST">
+                      <form :onsubmit="handlePurchase">
                         <div class="grid gap-4 py-4">
                           <div>
                             <Label for="phone" class="flex flex-col gap-2">
@@ -104,11 +168,66 @@ const isImageSrc = (src: string) =>
                           </div>
                         </div>
                         <DialogFooter>
-                          <Button type="submit" class="w-full">
+                          <Button type='submit' class="w-full" :disabled="buyDisabled">
                             Pay
                           </Button>
                         </DialogFooter>
                       </form>
+                    </DialogContent>
+                    <DialogContent v-else
+                    class="sm:max-w-[425px]" 
+                    @interact-outside.prevent 
+                    @focus-outside.prevent
+                    @pointer-down-outside.prevent>
+                    <div v-if="processing">
+                      <DialogHeader >
+                        <DialogTitle class="text-orange flex gap-3 items-center justify-center sm:justify-start">
+                          <div class="i-eos-icons-loading text-3xl"/>
+                          Processing
+                        </DialogTitle>
+                        <DialogDescription>
+                          We are sending you a push
+                        </DialogDescription>
+                      </DialogHeader>
+                      <div class="font-semibold py-2">
+                        Please wait while we process your request
+                      </div>
+                    </div>
+                    <div v-else>
+                      <div v-if="success">
+                        <DialogHeader >
+                          <DialogTitle class="text-green flex gap-3 items-center justify-center sm:justify-start">
+                            <div class="i-clarity-success-standard-line text-3xl"/>
+                            Success
+                          </DialogTitle>
+                          <DialogDescription>
+                            Successfully connected
+                          </DialogDescription>
+                        </DialogHeader>
+                        <div class="font-semibold py-2">
+                          Package {{ pkg.name }} purchased successfully
+                        </div>
+                      </div>
+                      <div v-else>
+                        <DialogHeader >
+                          <DialogTitle class="text-red flex gap-3 items-center justify-center sm:justify-start">
+                            <div class="i-material-symbols-error-outline-rounded text-3xl"/>
+                            Error
+                          </DialogTitle>
+                          <DialogDescription>
+                            An error occured
+                          </DialogDescription>
+                        </DialogHeader>
+                        <div class="font-semibold py-2">
+                          Something happened while processing the request
+                        </div>
+                        <DialogFooter>
+                          <Button variant="destructive" class="w-full" @click="retry">
+                            Try Again
+                          </Button>
+                        </DialogFooter>
+                      </div>
+                    </div>
                     </DialogContent>
                   </Dialog>
                 </CardFooter>
