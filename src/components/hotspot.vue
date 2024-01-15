@@ -77,14 +77,12 @@ const handlePurchase = async (e: SubmitEvent) => {
 }
 
 onUpdated(() => {
-  console.log(props)
   if(props.dark) {
     root.value!.classList.add('dark')
   } else {
     root.value!.classList.remove('dark')
   }
   if(props.theme) {
-    console.log(props.theme)
     root.value!.classList.remove('theme-blue')
     root.value!.classList.add(themes[props.theme])
   } else {
