@@ -38,14 +38,14 @@ export const themes = {
   violet: 'theme-violet',
   zinc: 'theme-zinc',
   rose: 'theme-rose',
-  gray: 'theme-gray'
+  gray: 'theme-gray',
 }
 
 export interface HotspotProps {
   packages: Package[]
   voucherUrl: string | undefined
-  packagePurchaseUrl: string | undefined,
-  csrfToken: string,
+  packagePurchaseUrl: string | undefined
+  csrfToken: string
   logo?: string
   dark?: boolean
   theme?: 'green' | 'blue' | 'red' | 'orange' | 'slate' | 'stone' | 'neutral' | 'violet' | 'zinc' | 'rose' | 'gray' | undefined

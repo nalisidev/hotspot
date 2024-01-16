@@ -7,41 +7,41 @@ export const defaultHotspotProps: HotspotProps = {
     {
       amount: 200,
       devices: 2,
-      duration: "2 hours",
+      duration: '2 hours',
       id: 1,
-      name: 'packageName'
+      name: 'packageName',
     },
     {
       amount: 200,
       devices: 2,
-      duration: "2 hours",
+      duration: '2 hours',
       id: 1,
-      name: 'packageName'
+      name: 'packageName',
     },
     {
       amount: 200,
       devices: 2,
-      duration: "2 hours",
+      duration: '2 hours',
       id: 1,
-      name: 'packageName'
+      name: 'packageName',
     },
     {
       amount: 200,
       devices: 2,
-      duration: "2 hours",
+      duration: '2 hours',
       id: 1,
-      name: 'packageName'
+      name: 'packageName',
     },
     {
       amount: 200,
       devices: 2,
-      duration: "2 hours",
+      duration: '2 hours',
       id: 1,
-      name: 'packageName'
+      name: 'packageName',
     },
   ],
   csrfToken: '',
   logo: '',
   dark: true,
-  theme: 'orange'
+  theme: 'orange',
 }

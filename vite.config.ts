@@ -27,7 +27,7 @@ export default defineConfig({
     outDir: 'lib',
   },
   define: {
-    'process.env': {}
+    'process.env': {},
   },
   plugins: [
     vue({

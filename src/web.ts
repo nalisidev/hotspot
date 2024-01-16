@@ -11,4 +11,3 @@ const hotspot = parseHotspot()
 injectHotspotInWindow(hotspot)
 
 export default hotspot
-
