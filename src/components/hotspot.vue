@@ -37,6 +37,7 @@ const submitted = ref(false)
 const processing = ref(false)
 const success = ref(false)
 const root = ref<HTMLElement>()
+const errMessage = ref<string>()
 
 function isImageSrc(src: string) {
   return src.startsWith('http') || src.startsWith('data:image/svg+xml')
@@ -48,31 +49,50 @@ async function handlePurchase(e: SubmitEvent) {
   e.preventDefault()
   submitted.value = true
   buyDisabled.value = true
-
-  // @ts-expect-error vendor
-  const action = e.target.action
   processing.value = true
 
-  setTimeout(() => {
-    fetch(action, {
+  const formData = new FormData(e.target as HTMLFormElement)
+
+  const body = {
+    phone: formData.get('phone'),
+    json: formData.get('json'),
+    package: formData.get('package'),
+    obtainable: formData.get('obtainable'),
+    payment_method: formData.get('payment_method'),
+    _token: formData.get('_token'),
+  }
+
+  if (props.packagePurchaseUrl) {
+    fetch(props.packagePurchaseUrl, {
       method: 'POST',
+      body: JSON.stringify(body),
       headers: {
         'Content-Type': 'application/json',
       },
     }).then((value) => {
       processing.value = false
       buyDisabled.value = false
+
+      console.log(value)
       // @ts-expect-error typematch
       if (value.status === 'success')
         success.value = true
       else
         success.value = false
-
-    }).catch(() => {
+    }).catch((e) => {
       processing.value = false
       buyDisabled.value = false
+
+      console.log(e)
+      errMessage.value = e.message
     })
-  }, 4000)
+  }
+  else {
+    processing.value = false
+    buyDisabled.value = false
+    errMessage.value = 'It\'s not you it\'s us'
+    throw new Error('packagePuchaseUrl not set')
+  }
 }
 
 onUpdated(() => {
@@ -217,10 +237,10 @@ onMounted(() => {
                             </DialogDescription>
                           </DialogHeader>
                           <div class="font-semibold py-2">
-                            Something happened while processing the request
+                            {{ errMessage }}
                           </div>
                           <DialogFooter>
-                            <Button variant="destructive" class="w-full" @click="retry">
+                            <Button variant="default" class="w-full" @click="retry">
                               Try Again
                             </Button>
                           </DialogFooter>
@@ -277,6 +297,7 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 input:focus::placeholder {

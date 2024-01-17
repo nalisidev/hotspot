@@ -68,7 +68,9 @@ There, you can change the container dimensions. Here is a code example:
         voucherUrl: "http://localhost:3000/voucher",
         packagePurchaseUrl: "http://localhost:3000/purchase",
         csrfToken: '',
-        logo: 'https://th.bing.com/th/id/R.e1d709fc01d327cd5d8a429b27fc41b6?rik=KSdagOU4oA61ug&pid=ImgRaw&r=0' //url or toDataUrl(imagePath) or undefined
+        logo: 'https://th.bing.com/th/id/R.e1d709fc01d327cd5d8a429b27fc41b6?rik=KSdagOU4oA61ug&pid=ImgRaw&r=0', //url or toDataUrl(imagePath) or undefined
+        dark: true,
+        theme: 'yellow' // 'green' | 'blue' | 'red' | 'orange' | 'slate' | 'stone' | 'neutral' | 'violet' | 'zinc' | 'rose' | 'gray' | undefined
       });
     </script>
 

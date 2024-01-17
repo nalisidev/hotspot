@@ -48,7 +48,9 @@ export type FocusOutsideEvent = CustomEvent<{
   originalEvent: FocusEvent
 }>
 
-interface DialogEmits {
+
+// eslint-disable-next-line
+type DialogEmits = {
   /**
    * Event handler called when the escape key is down.
    * Can be prevented.
